@@ -35,7 +35,7 @@
                 </h4>
             </div>
         </div>
-        <div class="row"  style="height: auto;">
+        <div class="row"  style="height: auto; margin-top: 40px;">
             <div class="col-md-6">
                 <h6 style="background-color: #1876b4;
                                color:white;
@@ -49,13 +49,13 @@
                 Total Digital Revenue 2021
                 -->
 
-                <div class="row" style="width:100%;">
-                    <div class="form-group col-lg-7 col-sm-7 col-12" style="margin-bottom:3px; font-weight:500;margin-top:7px; ">
+                <div class="row" style="width:100%; margin-bottom: 25px;">
+                    <div class="form-group col-lg-7 col-sm-7 col-12" style="margin-bottom:10px; font-weight:500;margin-top:20px; ">
                         <label for="totalOTARevenue2021" class="form-label" style="color: #1876b4;">
                             OTA Revenue 2021
                         </label>
                     </div>
-                    <div class="form-group col-lg-5 col-sm-5 col-12">
+                    <div class="form-group col-lg-5 col-sm-5 col-12" style="margin-top:20px;">
                         <!--<input class="form-control bg-success text-white text-right" type="text" id="txtMarketTotalRevenue" name="lname" onfocus="this.select();" onfocusout="SetDefaultValue(this)" onkeyup="calculate()" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" data-type="currency" style="font-weight: 500;">-->
                         <input type="text"
                                id="totalOTARevenue2021"
@@ -69,7 +69,7 @@
                                style="font-weight: 500;">
                     </div>
 
-                    <h6 class="d-flex justify-content-center" style="color: #1876b4;">
+                    <h6 class="d-flex justify-content-center" style="color: #1876b4; margin-top:25px;">
                         Projected OTA Ad Revenue Growth
                     </h6>
                     <table class="table">
@@ -109,7 +109,7 @@
                     </div>
 
                     <!-- -->
-                    <h6 class="d-flex justify-content-center" style="color: #1876b4;">
+                    <h6 class="d-flex justify-content-center" style="color: #1876b4; margin-top: 25px;">
                         Projected Third-Party Digital Revenue
                     </h6>
                     <table class="table">
@@ -133,7 +133,8 @@
 
                 <div class="row" style="width:100%;">
 
-                    <h6 style="color: #1876b4; margin-top:20px;" class="d-flex justify-content-center">Third-Party Digital Revenue 2021 (by company size)</h6>
+                    <h6 style="color: #1876b4; margin-top:120px; margin-bottom:50px;"
+                        class="d-flex justify-content-center">Third-Party Digital Revenue 2021 (by company size)</h6>
 
                     <div class="form-group col-lg-7 col-sm-7 col-12" style="margin-bottom:3px; font-weight:500;margin-top:7px; ">
                         <label style="color: #1876b4;" for="totalDigitalRevenue2021LARGE" class="form-label">Large</label>
@@ -212,7 +213,8 @@
             </div>
             <div class="col-md-6">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="row-cols-auto">
+
                         <h6
                                 class="d-flex justify-content-center"
                                 style="background-color: #094780;
@@ -223,15 +225,28 @@
                                    font-weight: normal;">
                             Next,take a look at projections based on your data:</h6>
                         <h6 class="d-flex justify-content-center" style="color: #1876b4;">
+                            OTA Ad Revenue Chart
+                        </h6>
+                        <div id="chartOTAcontainer" class="chart-container">
+                            <canvas id="chart_OTA_Projected_Revenue"></canvas>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row-cols-auto">
+
+                        <h6 class="d-flex justify-content-center" style="color: #1876b4;">
                             Digital Growth Chart
                         </h6>
-                        <div id="chartDigitalcontainer" class="chart-container"  style="position: relative; height:40vh; width:auto;border: 1px solid lightgray;">
-                            <canvas id="chart_Digital_Projected_Revenue"></canvas>
+                        <div id="chartDigitalcontainer" class="chart-container">
+                            <canvas id="chart_Digital_Projected_Revenue" ></canvas>
                         </div>
 
                     </div>
                 </div>
             </div>
+
         </div>
 
         <div class="row" style="padding-bottom: 20px;">
@@ -249,19 +264,19 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td style="color: #1876b4;">Large Market</td>
+                            <td style="color: #1876b4; font-weight: bold;">Large Market</td>
                             <td><span id="Digital2022Large"></span></td>
                             <td><span id="Digital2023Large"></span></td>
                             <td><span id="Digital2024Large"></span></td>
                         </tr>
                         <tr>
-                            <td style="color: #1876b4;">Mid Market</td>
+                            <td style="color: #1876b4; font-weight: bold;">Mid Market</td>
                             <td><span id="Digital2022Mid"></span></td>
                             <td><span id="Digital2023Mid"></span></td>
                             <td><span id="Digital2024Mid"></span></td>
                         </tr>
                         <tr>
-                            <td style="color: #1876b4;">Small Market</td>
+                            <td style="color: #1876b4; font-weight: bold;">Small Market</td>
                             <td><span id="Digital2022Small"></span></td>
                             <td><span id="Digital2023Small"></span></td>
                             <td><span id="Digital2024Small"></span></td>
@@ -276,7 +291,7 @@
                         <h6 class="d-flex justify-content-center">
                             Projected OTA Ad Revenue Growth
                         </h6>
-                        <table class="table">
+                        <table class="table" style="color: lightseagreen;">
                             <thead class="">
                             <tr>
                                 <th>Year</th>
@@ -303,7 +318,7 @@
                         <h6 class="d-flex justify-content-center">
                             Projected Digital Advertising Growth
                         </h6>
-                        <table class="table">
+                        <table class="table" style="color: lightseagreen;">
                             <thead class="">
                             <tr>
                                 <th>Year</th>
@@ -353,10 +368,10 @@
 
             <div class="col-6">
                 <h6 class="d-flex justify-content-center" style="color: #1876b4;">
-                    OTA Ad Revenue Growth Chart
+                    Third-Party Digital Projected Revenue by Company Size Chart
                 </h6>
-                <div id="chartOTAcontainer" class="chart-container"  style="position: relative; border: 1px solid lightgray;">
-                    <canvas id="chart_OTA_Projected_Revenue" width="400" height="400"></canvas>
+                <div id="chartDigitalCOMPANYcontainer" class="chart-container">
+                    <canvas id="chart_Digital_COMPANY_Projected_Revenue"></canvas>
                 </div>
             </div>
 

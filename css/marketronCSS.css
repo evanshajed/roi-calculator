@@ -11,3 +11,10 @@
 th, td{
     text-align: center!important;
 }
+
+.chart-container{
+    position: relative;
+    height:40vh;
+    width:35vw;
+    border: 1px solid lightgray;
+}

@@ -9,6 +9,21 @@ pOTAAdRG2022 = 11.40;           // Projected OTA Ad Revenue Growth 2022
 pOTAAdRG2023 = -5.00;           // Projected OTA Ad Revenue Growth 2023
 pOTAAdRG2024 = -1.00;           // Projected OTA Ad Revenue Growth 2024
 
+let OTA_2021      =0;
+let OTA_2022      =0;
+let OTA_2023      =0;
+let OTA_2024      =0;
+
+let Digital_2021      =0;
+let Digital_2022      =0;
+let Digital_2023      =0;
+let Digital_2024      =0;
+
+let Large_2021    =0;     let Mid_2021      =0;     let Small_2021    =0;
+let Large_2022    =0;     let Mid_2022      =0;     let Small_2022    =0;
+let Large_2023    =0;     let Mid_2023      =0;     let Small_2023    =0;
+let Large_2024    =0;     let Mid_2024      =0;     let Small_2024    =0;
+
 function Projected_OTA_Revenue( previousYearRevenue, percentageChange ){
 
     console.log("Previous Year Revenue :" + previousYearRevenue);
@@ -217,22 +232,31 @@ function formatCurrency(input, blur) {
 }
 
 let chart_OTA_Projected_Revenue_Values = [];
+let chart_Digital_Projected_Revenue_Values = [];
+
+let Digital_COMPANY_Projected_Revenue_LARGE = [];
+let Digital_COMPANY_Projected_Revenue_MID = [];
+let Digital_COMPANY_Projected_Revenue_SMALL = [];
 
 function chart_OTA_Projected_Revenue(chart_OTA_Projected_Revenue_Values){
 
-
-    // Bar chart
-    //var ctx = document.getElementById('chart_OTA_Projected_Revenue').getContext('2d'); // 2d context
-    //var ctx = $('#myChart'); // jQuery instance
-    //var ctx = 'myChart'; // element id
-
-    console.log("chat VALUES:"+chart_OTA_Projected_Revenue_Values);
+    console.log("chart VALUES:"+chart_OTA_Projected_Revenue_Values);
 
     new Chart(document.getElementById("chart_OTA_Projected_Revenue"), {
         type: 'bar',
         data: {
-            labels: ["1900", "1950", "1999", "2050"],
+            labels: ["2021", "2022", "2023", "2024"],
             datasets: [
+                {
+                    label: "OTA Revenue",
+                    backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9"],
+                    type: "bar",
+                    borderColor: "#8e5ea2",
+                    data: chart_OTA_Projected_Revenue_Values,
+                    //data: [OTA_2021,OTA_2022,OTA_2023,OTA_2024],
+                    fill: false
+                }
+                /*
                 {
                     label: "Europe",
                     type: "line",
@@ -272,79 +296,195 @@ function chart_OTA_Projected_Revenue(chart_OTA_Projected_Revenue_Values){
                     type: "bar",
                     backgroundColor: "rgba(0,0,0,0.2)",
                     backgroundColorHover: "#3e95cd",
-                    data: [33,21,83,107]
+                    //data: chart_OTA_Projected_Revenue_Values
+                    data: [33,21,83,478]
                 }
+                */
             ]
         },
         options: {
             title: {
                 display: true,
-                text: 'Population growth (millions): Europe & Africa'
+                text: 'OTA Revnue Projection Chart From 2021'
             },
             legend: { display: false }
-        }
-    });
-
-    /*
-    new Chart(document.getElementById('chart_OTA_Projected_Revenue'), {
-    //new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ["2021", "2022", "2023", "2024"],
-            datasets: [
-                {
-                    label: "OTA Projected Ad Revenue Growth",
-                    backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9"],
-                    //data: [2478,5267,734,784]
-                    data: chart_OTA_Projected_Revenue_Values
-                }
-            ]
-        },
-        options: {
-            legend: { display: false },
-            title: {
-                display: true,
-                text: 'OTA Projected Revenue'
-            },
-            scales: {
+            ,scales: {
                 yAxes: [{
                     ticks: {
-                        suggestedMin: 100000
+                        suggestedMin: 10000
                     }
                 }]
             }
         }
     });
-    */
 
+
+
+}
+function chart_Digital_Projected_Revenue(chart_Digital_Projected_Revenue_Values){
+
+    console.log("chart VALUES:"+chart_Digital_Projected_Revenue_Values);
+
+    new Chart(document.getElementById("chart_Digital_Projected_Revenue"), {
+        type: 'bar',
+        data: {
+            labels: ["2021", "2022", "2023", "2024"],
+            datasets: [
+                {
+                    label: "Digital Revenue",
+                    backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9"],
+                    type: "bar",
+                    borderColor: "#8e5ea2",
+                    data: chart_Digital_Projected_Revenue_Values,
+                    fill: false
+                }
+                /*
+                {
+                    label: "Europe",
+                    type: "line",
+                    borderColor: "#8e5ea2",
+                    data: [408,547,675,734],
+                    fill: false
+                },
+                {
+                    label: "Africa",
+                    type: "line",
+                    borderColor: "#3e95cd",
+                    data: [133,221,783,2478],
+                    fill: false
+                },
+                {
+                    label: "Asia",
+                    type: "line",
+                    backgroundColor: "rgba(0,0,0,0.2)",
+                    backgroundColorHover: "#3e95cd",
+                    data: [33,21,83,107]
+                }
+                ,{
+                    label: "Europe",
+                    type: "bar",
+                    backgroundColor: "rgba(0,0,0,0.2)",
+                    data: [408,547,675,734],
+                },
+                {
+                    label: "Africa",
+                    type: "bar",
+                    backgroundColor: "rgba(0,0,0,0.2)",
+                    backgroundColorHover: "#3e95cd",
+                    data: [133,221,783,2478]
+                }
+                ,{
+                    label: "Asia",
+                    type: "bar",
+                    backgroundColor: "rgba(0,0,0,0.2)",
+                    backgroundColorHover: "#3e95cd",
+                    //data: chart_OTA_Projected_Revenue_Values
+                    data: [33,21,83,478]
+                }
+                */
+            ]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'OTA Revnue Projection Chart From 2021'
+            },
+            legend: { display: false }
+            ,scales: {
+                yAxes: [{
+                    ticks: {
+                        suggestedMin: 10000
+                    }
+                }]
+            }
+        }
+    });
+
+
+
+}
+
+function chart_Digital_COMPANY_Projected_Revenue(){
+
+    new Chart(document.getElementById("chart_Digital_COMPANY_Projected_Revenue"), {
+        type: 'bar',
+        data: {
+            labels: ["2021", "2022", "2023", "2024"],
+            datasets: [
+                {
+                    label: "Large",
+                    type: "line",
+                    borderColor: "#8e5ea2",
+                    data: [Large_2021,Large_2022,Large_2023,Large_2024],
+                    fill: false
+                },
+                {
+                    label: "Mid",
+                    type: "line",
+                    borderColor: "#3e95cd",
+                    data: [Mid_2021,Mid_2022,Mid_2023,Mid_2024],
+                    fill: false
+                },
+                {
+                    label: "Small",
+                    type: "line",
+                    backgroundColor: "rgba(0,0,0,0.2)",
+                    backgroundColorHover: "#3e95cd",
+                    data: [Small_2021,Small_2022,Small_2023,Small_2024]
+                }
+                ,{
+                    label: "Large",
+                    type: "bar",
+                    backgroundColor: "rgba(0,0,0,0.2)",
+                    data: [Large_2021,Large_2022,Large_2023,Large_2024],
+                },
+                {
+                    label: "Mid",
+                    type: "bar",
+                    backgroundColor: "rgba(0,0,0,0.2)",
+                    backgroundColorHover: "#3e95cd",
+                    data: [Mid_2021,Mid_2022,Mid_2023,Mid_2024],
+                }
+                ,{
+                    label: "Small",
+                    type: "bar",
+                    backgroundColor: "rgba(0,0,0,0.2)",
+                    backgroundColorHover: "#3e95cd",
+                    data: [Small_2021,Small_2022,Small_2023,Small_2024]
+                }
+
+            ]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'OTA Revnue Projection Chart From 2021'
+            },
+            legend: { display: false }
+            ,scales: {
+                yAxes: [{
+                    ticks: {
+                        suggestedMin: 10000
+                    }
+                }]
+            }
+        }
+    });
 }
 
 /* OTA Revenue start  */
 let OTA2022revenue    =0;       let OTA2023revenue      =0;     let OTA2024revenue    =0;
 /* OTA Revenue end  */
 
-/* Digital Advertising Growth start  */
-let Digital2022Large    =0;     let Digital2022Mid      =0;     let Digital2022Small    =0;
-let Digital2023Large    =0;     let Digital2023Mid      =0;     let Digital2023Small    =0;
-let Digital2024Large    =0;     let Digital2024Mid      =0;     let Digital2024Small    =0;
-/* Digital Advertising Growth end  */
 
-let OTA_2021      =0;
-let OTA_2022      =0;
-let OTA_2023      =0;
-let OTA_2024      =0;
-
-let Digital_2022      =0;
-let Digital_2023      =0;
-let Digital_2024      =0;
-
-let Large_2022    =0;     let Mid_2022      =0;     let Small_2022    =0;
-let Large_2023    =0;     let Mid_2023      =0;     let Small_2023    =0;
-let Large_2024    =0;     let Mid_2024      =0;     let Small_2024    =0;
 
 
 
 $(document).ready(function () {
+
+    chart_OTA_Projected_Revenue();
+    chart_Digital_Projected_Revenue();
+    chart_Digital_COMPANY_Projected_Revenue();
 
     /////////////////////////////////////////////////////////////////////
     $("#totalDigitalRevenue2021LARGE").on({
@@ -370,6 +510,7 @@ $(document).ready(function () {
             var regex = /[$.,\s]/g;
             var stripped = str.replace(regex, '');
 
+            Large_2021 = stripped;
             ///////////////////////////////////////////////////////////////
 
             let digitalRevenue2022L = Projected_Third_Party_Digital_Revenue(stripped,pdag2022BroadCast);
@@ -400,6 +541,9 @@ $(document).ready(function () {
             var commaNum = ValueIn3DigitComma(num);
             $(this).val(commaNum);
             console.log(commaNum);
+
+            chart_Digital_COMPANY_Projected_Revenue();
+
 
         },
         blur: function () {
@@ -449,7 +593,7 @@ $(document).ready(function () {
             var regex = /[$.,\s]/g;
             var stripped = str.replace(regex, '');
 
-
+            Mid_2021 = stripped;
             //////////////////////////////////////////////////////////////////////////////////
 
             let digitalRevenue2022M = Projected_Third_Party_Digital_Revenue(stripped,pdag2022BroadCast);
@@ -480,6 +624,8 @@ $(document).ready(function () {
             var commaNum = ValueIn3DigitComma(num);
             $(this).val(commaNum);
             console.log(commaNum);
+
+            chart_Digital_COMPANY_Projected_Revenue();
 
         },
         blur: function () {
@@ -529,6 +675,8 @@ $(document).ready(function () {
             var regex = /[$.,\s]/g;
             var stripped = str.replace(regex, '');
 
+            Small_2021 = stripped;
+
             ///////////////////////////////////////////////////////////////
 
             let digitalRevenue2022S = Projected_Third_Party_Digital_Revenue(stripped,pdag2022BroadCast);
@@ -559,6 +707,8 @@ $(document).ready(function () {
             var commaNum = ValueIn3DigitComma(num);
             $(this).val(commaNum);
             console.log(commaNum);
+
+            chart_Digital_COMPANY_Projected_Revenue();
 
         },
         blur: function () {
@@ -635,11 +785,11 @@ $(document).ready(function () {
             console.log(OTA_2021);
 
             chart_OTA_Projected_Revenue_Values = [OTA_2021,OTA_2022,OTA_2023,OTA_2024];
-
             chart_OTA_Projected_Revenue(chart_OTA_Projected_Revenue_Values);
 
         },
         blur: function () {
+            chart_OTA_Projected_Revenue(chart_OTA_Projected_Revenue_Values);
             /*
             $("#totalOTARevenue2021").each(function() {
                 //console.log("Inside Blur");
@@ -692,7 +842,7 @@ $(document).ready(function () {
             var stripped = str.replace(regex, '');
             console.log("stripped value :" +stripped);
 
-
+            Digital_2021 = stripped;
             // formatCurrency($(this));
             console.log("2021 - "+ $(this).val());
 
@@ -717,8 +867,13 @@ $(document).ready(function () {
             $(this).val(commaNum);
             console.log(commaNum);
 
+            chart_Digital_Projected_Revenue_Values = [Digital_2021,Digital_2022,Digital_2023,Digital_2024];
+            chart_Digital_Projected_Revenue(chart_Digital_Projected_Revenue_Values);
+
         },
         blur: function () {
+
+            chart_Digital_Projected_Revenue(chart_Digital_Projected_Revenue_Values);
             /*
             $("#totalOTARevenue2021").each(function() {
                 //console.log("Inside Blur");
@@ -750,7 +905,5 @@ $(document).ready(function () {
         }
     });
 
-
-    chart_OTA_Projected_Revenue();
 
 });
