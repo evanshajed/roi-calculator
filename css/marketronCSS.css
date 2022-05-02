@@ -18,3 +18,20 @@ th, td{
     width:35vw;
     border: 1px solid lightgray;
 }
+
+.head_one{
+    background-color: #1876b4;
+    color:white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding:20px 40px;
+    font-weight: normal;
+}
+.chart_head{
+    background-color: #094780;
+    color:white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding:20px 40px;
+    font-weight: normal;
+}
