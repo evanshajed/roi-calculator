@@ -13,13 +13,12 @@
     <script src="js/jspdf.min.js"></script>
     <script src="js/exportpdf.js"></script>
     <script src="js/html2canvas.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script src="js/currency.min.js"></script>
     <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
 
     <!--<script src="js/variable_value.js"></script>-->
-
-    <script src="js/currency.min.js"></script>
     <script src="js/source.js"></script>
 
 
@@ -29,7 +28,7 @@
 
 
 
-<div class="container" id="test">
+<div class="container" id="calc_container">
 
     <div class="header">
         <!--<img class="logo" src="Logo.png"/>-->
@@ -287,16 +286,9 @@
 
             <div class="row-cols-auto">
                 <div class="actBtns float-end" style="margin-top: 20px;">
-                    <!--<button class="svRsltBtn" id="exportbtn" onclick="ExportToPDF1()"--></button>
-                    <button class="svRsltBtn" id="exportbtn" onclick="savePDF()"
-                            style="display:inline;
-                            margin-right: 6px;
-                            border: 0.5px;
-                            background-color: rgb(19, 90, 156);
-                            border-radius: 6px;
-                            color: white;
-                            height: 44px;
-                            width: 180px;">
+                    <!-- <button class="svRsltBtn" id="exportbtn" onclick="ExportToPDF1()" -->
+                    <button class="svRsltBtn pdf_button" id="exportbtn" onclick="savePDF()">
+                    <!-- <button class="svRsltBtn" id="exportbtn" onclick="ExportToPDF()"> -->
                         Save Results (PDF)
                         <!--<img src="image\download.png" height="14px" width="14px">-->
                     </button>

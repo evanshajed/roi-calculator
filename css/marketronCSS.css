@@ -7,9 +7,18 @@
     font-weight: 500;
     padding-top: 8px;
 }
+*{
+    margin:0;
+    padding:0;
+}
 
 th, td{
     text-align: center!important;
+}
+
+.mystyle{
+    overflow: -moz-hidden-unscrollable;
+    overflow: hidden;
 }
 
 .chart-container{
@@ -34,4 +43,15 @@ th, td{
     border-top-right-radius: 10px;
     padding:20px 40px;
     font-weight: normal;
+}
+
+.pdf_button{
+    display:inline;
+    margin-right: 6px;
+    border: 0.5px;
+    background-color: rgb(19, 90, 156);
+    border-radius: 6px;
+    color: white;
+    height: 44px;
+    width: 180px;
 }
