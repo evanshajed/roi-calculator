@@ -181,8 +181,7 @@ var PDF_Height = PDF_Width * 1.2 ;
 
 
     const element = document.body;
-    //let y = element.scrollHeight;
-    let y = element.clientHeight;
+    let y = element.scrollHeight;
     let x = element.scrollWidth;
 
 
@@ -197,8 +196,8 @@ var PDF_Height = PDF_Width * 1.2 ;
         allowTaint: true,
         tainTest:false,
         loggin:true,
-        height: y*1.5,
-
+        height: y*1.5
+        ,y:100
 
     }).then(function (canvas){
 
@@ -356,7 +355,7 @@ function chart_OTA_Projected_Revenue(chart_OTA_Projected_Revenue_Values){
 
     var xValues = ["2021", "2022", "2023", "2024"];
     var yValues = chart_OTA_Projected_Revenue_Values;
-    var barColors = ["#0f488d", "#46b649","#0896c5","#1f2e3e"];
+    var barColors = ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9"];
 
     new Chart("chart_OTA_Projected_Revenue", {
         type: "bar",
@@ -527,7 +526,7 @@ function chart_Digital_Projected_Revenue(chart_Digital_Projected_Revenue_Values)
 
     var xValues = ["2021", "2022", "2023", "2024"];
     var yValues = chart_Digital_Projected_Revenue_Values;
-    var barColors = ["#0f488d", "#46b649","#0896c5","#1f2e3e"];
+    var barColors = ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9"];
 
     new Chart("chart_Digital_Projected_Revenue", {
         type: "bar",
@@ -591,8 +590,8 @@ function chart_Digital_COMPANY_Projected_Revenue(){
                 data: chart_Digital_Projected_Revenue_Values,
                 // this dataset is drawn below
                 order: 4,
-                borderColor: '#0896c5',
-                backgroundColor: '#0896c5',
+                borderColor: 'rgba(8,47,215,0.35)',
+                backgroundColor: 'rgba(8,47,215,0.35)',
                 yAxisID:'A'
             }, {
                 label: 'Large Market',
@@ -601,7 +600,7 @@ function chart_Digital_COMPANY_Projected_Revenue(){
                 // this dataset is drawn on top
                 order: 3,
                 fill: false,
-                borderColor: '#46b649',
+                borderColor: 'rgb(37,163,59)',
                 yAxisID:'B'
             },
             {
@@ -611,7 +610,7 @@ function chart_Digital_COMPANY_Projected_Revenue(){
                 // this dataset is drawn on top
                 order: 2,
                 fill: false,
-                borderColor: '#7030a0',
+                borderColor: 'rgb(11,241,156)',
                 yAxisID:'B'
             },
             {
@@ -621,7 +620,7 @@ function chart_Digital_COMPANY_Projected_Revenue(){
                 // this dataset is drawn on top
                 order: 1,
                 fill: false,
-                borderColor: '#0f488d',
+                borderColor: 'rgb(6,228,248)',
                 yAxisID:'B'
             }],
 
