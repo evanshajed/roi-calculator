@@ -1,5 +1,21 @@
 
+#Digital2022Large,
+#Digital2022Mid,
+#Digital2022Small,
+#Digital2023Large,
+#Digital2023Mid,
+#Digital2023Small,
+#Digital2024Large,
+#Digital2024Mid,
+#Digital2024Small
+{
+    font-weight: bold;
+}
 
+.bg-input-back{
+    --bs-bg-opacity: 1;
+    background-color: #45b74f !important
+}
 
 .left{
     padding-left: 10px;
