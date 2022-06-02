@@ -226,7 +226,7 @@ var pdf = new jsPDF('p', 'mm', [PDF_Width, PDF_Height]);
 
 //pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
 //pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, 0, -100, canvas_image_width, canvas.height);
-pdf.addImage(imgData, 'JPG', top_left_margin,top_left_margin,canvas_image_width, canvas.height);
+pdf.addImage(imgData, 'JPG', top_left_margin,top_left_margin,canvas_image_width, canvas.height-800);
 
 
 
