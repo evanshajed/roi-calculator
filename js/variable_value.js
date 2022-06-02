@@ -391,9 +391,11 @@ function chart_OTA_Projected_Revenue(chart_OTA_Projected_Revenue_Values){
             },
             responsiveAnimationDuration: 0
             , scales: {
+                beginAtZero: true,
                 yAxes: [{
+                    beginAtZero: true,
                     ticks: {
-                        suggestedMin: 100000,
+                        suggestedMin: 1000,
                         callback: function (value, index, values) {
                             var resInM = (value < 1000000) ? value / 1000 + 'K' : value / 1000000 + 'M';
                             return '$' + resInM;
@@ -563,9 +565,11 @@ function chart_Digital_Projected_Revenue(chart_Digital_Projected_Revenue_Values)
             },
             responsiveAnimationDuration: 0
             , scales: {
+                beginAtZero: true,
                 yAxes: [{
+                    beginAtZero: true,
                     ticks: {
-                        suggestedMin: 100000,
+                        suggestedMin: 1000,
 
                         callback: function (value, index, values) {
                             var resInM = (value < 1000000) ? value / 1000 + 'K' : value / 1000000 + 'M';
@@ -651,7 +655,7 @@ function chart_Digital_COMPANY_Projected_Revenue(){
                         position: 'left',
                         ticks: {
                             suggestedMin: 100000,
-                            fontColor: 'rgba(8,47,215,0.35)',
+                            fontColor: 'rgb(0,0,0)',
                             callback: function (value, index, values) {
                                 let resInM = (value < 1000000) ? value / 1000 + 'K' : value / 1000000 + 'M';
                                 return '$' + resInM;
