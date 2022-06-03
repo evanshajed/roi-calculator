@@ -88,10 +88,9 @@ function ValueIn3DigitComma(strVal) {
 
 function savePDF(){
 
-
-    var node = document.getElementById('calc_container');
-    $("#exportbtn").hide();
-    domtoimage.toPng(node)
+    var node = document.getElementById('zone');
+    //domtoimage.toPng(node)
+    domtoimage.toJpeg(node)
         .then(function (dataUrl) {
             var img = new Image();
             img.src = dataUrl;
@@ -101,13 +100,13 @@ function savePDF(){
                 unit: 'mm',
                 format: 'a4',
             });
-            doc.addImage(img,'JPEG', -25, 0, 200, 295);
-            doc.save("Example.pdf");
+            doc.addImage(img,'JPEG', 10, 0, 185, 298);
+            doc.save("Marketron_ROI_Calculation.pdf");
         })
         .catch(function (error) {
             console.error('oops, something went wrong!', error);
         });
-    $("#exportbtn").show();
+
 }
 
 function formatCurrency(input, blur) {

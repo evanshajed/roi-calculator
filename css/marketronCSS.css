@@ -72,8 +72,12 @@ th, td{
     width: 180px;
 }
 
-
-
+body{
+    background: white;
+}
+.row{
+    background-color: white;
+}
 h3,h4{
     font-family: 'Montserrat', sans-serif;
 }
