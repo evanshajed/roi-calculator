@@ -86,178 +86,28 @@ function ValueIn3DigitComma(strVal) {
     return strVal;
 }
 
-
-function ExportToPDF(){
-
-    $("#exportbtn").hide();
-
-    var HTML_Width =  1100 //$("#content").width();
-    var HTML_Height = 1500 //$("#content").height();
-    var top_left_margin = 15;
-    var PDF_Width = HTML_Width + (top_left_margin * 2);
-    var PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
-
-    var canvas_image_width = HTML_Width;
-    var canvas_image_height = HTML_Height;
-
-    var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
-
-
-    html2canvas($("#calc_container")[0], { /*quality: 2,*/ scale: 2, allowTaint: true }).then(function (canvas) {
-
-        canvas.getContext('2d');
-
-        /*
-        console.log("canvas.height -" + canvas.height);
-        console.log("canvas.width -" + canvas.width);
-        console.log("\n");
-        console.log("PDF_Height -"+PDF_Height);
-        console.log("PDF_Width -"+PDF_Width);
-        console.log("\n");
-        console.log("top_left_margin -"+top_left_margin)
-        console.log("\n");
-        console.log("canvas_image_height -"+canvas_image_height);
-        console.log("canvas_image_width -"+canvas_image_width);
-        */
-
-        var imgData = canvas.toDataURL("image/jpeg", 1.0);
-        var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
-        pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
-
-
-        for (var i = 1; i <= totalPDFPages; i++) {
-
-            pdf.addPage(PDF_Width, PDF_Height);
-
-            //pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height * i) + (top_left_margin * 4), canvas_image_width, canvas_image_height-50);
-            pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin ,0,0, canvas_image_width, canvas_image_height-50);
-
-        }
-        setTimeout(function () {
-            pdf.save("Marketron.pdf");
-        }, 1000);
-
-
-
-
-    });
-
-    $("#exportbtn").show();
-
-}
-
 function savePDF(){
 
-    /*
-    html2canvas(document.body).then(function(canvas) {
-        document.body.appendChild(canvas);
-    });
-    */
-    var body = document.body,
-        html = document.documentElement;
 
-    var height = Math.max( body.scrollHeight, body.offsetHeight,
-        html.clientHeight, html.scrollHeight, html.offsetHeight );
-
-    var HTML_Width = document.body.offsetWidth;
-    var HTML_Height = document.body.offsetHeight;
-
-
-    var top_left_margin = 10;
-    var PDF_Width = HTML_Width + (top_left_margin * 2);
-
-
-//var PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
-var PDF_Height = PDF_Width * 1.2 ;
-
-
-    //var PDF_Height = PDF_Width + top_left_margin;
-
-    var canvas_image_width = HTML_Width;
-    var canvas_image_height = HTML_Height;
-    //var canvas_image_height = height;
-
-    var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
-
-
-    const element = document.body;
-    //let y = element.scrollHeight;
-    let y = element.clientHeight;
-    let x = element.scrollWidth;
-
-
-    //$("#exportbtn").hide();
-    //window.scrollTo(0,0);
-
-    html2canvas(document.body, {
-        /*quality: 2,*/
-        /*backgroundColor:"#353454",*/
-        quality: 2,
-        scale: 1.0,
-        allowTaint: true,
-        tainTest:false,
-        loggin:true,
-        height: y*1.5,
-
-
-    }).then(function (canvas){
-
-        // $("#exportbtn").show();
-
-        canvas.getContext('2d');
-        //alert(canvas.height + "  " + canvas.width);
-
-        //document.body.appendChild(canvas);
-
-        var imgData = canvas.toDataURL("image/jpeg", 1.0);
-        //var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-
-        var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-
-        // window.scrollTo(0,0);
-
-
-
-    // here is the most important part because if you dont replace you will get a DOM 18 exception.
-//window.location.href=image; // it will save locally
-
-//var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
-var pdf = new jsPDF('p', 'mm', [PDF_Width, PDF_Height]);
-
-//pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
-//pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, 0, -100, canvas_image_width, canvas.height);
-pdf.addImage(imgData, 'JPG', top_left_margin,top_left_margin,canvas_image_width, canvas.height-800);
-
-
-
-        console.log("canvas.height -" + canvas.height);
-        console.log("canvas.width -"  + canvas.width);
-        console.log("\n");
-        console.log("PDF_Height -"+PDF_Height);
-        console.log("PDF_Width -"+PDF_Width);
-        console.log("\n");
-        console.log("top_left_margin -"+top_left_margin)
-        console.log("\n");
-        console.log("canvas_image_height -"+canvas_image_height);
-        console.log("canvas_image_width -"+canvas_image_width);
-
-        /*
-        for (var i = 1; i <= totalPDFPages; i++) {
-            pdf.addPage(PDF_Width, PDF_Height);
-            //pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height * i) + (top_left_margin * 4), canvas_image_width, canvas_image_height-50);
-            pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height * i) + (top_left_margin * 1), canvas_image_width, canvas_image_height-5);
-            //pdf.addImage(imgData, 'JPG');
-        }
-        */
-
-
-
-setTimeout(function () {
-    pdf.save("Calculation.pdf");
-}, 1000);
-
-
-    });
+    var node = document.getElementById('calc_container');
+    $("#exportbtn").hide();
+    domtoimage.toPng(node)
+        .then(function (dataUrl) {
+            var img = new Image();
+            img.src = dataUrl;
+                                    //document.body.appendChild(img);
+            let doc = new jsPDF({
+                orientation: 'p',
+                unit: 'mm',
+                format: 'a4',
+            });
+            doc.addImage(img,'JPEG', -25, 0, 200, 295);
+            doc.save("Example.pdf");
+        })
+        .catch(function (error) {
+            console.error('oops, something went wrong!', error);
+        });
+    $("#exportbtn").show();
 }
 
 function formatCurrency(input, blur) {
