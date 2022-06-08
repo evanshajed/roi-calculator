@@ -440,7 +440,7 @@ function chart_Digital_COMPANY_Projected_Revenue(){
         data: {
             labels: ["2021", "2022", "2023", "2024"],
             datasets: [{
-                label: 'Digital Revenue',
+                label: 'Your Digital Revenue',
                 data: chart_Digital_Projected_Revenue_Values,
                 // this dataset is drawn below
                 order: 4,
@@ -510,6 +510,11 @@ function chart_Digital_COMPANY_Projected_Revenue(){
                                 return '$' + resInM;
                             },
                         },
+                        scaleLabel: {
+                            display: true,
+                            fontSize: 14,
+                            labelString: 'Your Digital Revenue',
+                        }
                     },
                     {
                         id: 'B',
@@ -524,6 +529,11 @@ function chart_Digital_COMPANY_Projected_Revenue(){
                         },
                         gridLines: {
                             display: false
+                        },
+                        scaleLabel: {
+                            display: true,
+                            fontSize: 14,
+                            labelString: 'Digital Revenue by Company Size',
                         }
                     }
                 ]
