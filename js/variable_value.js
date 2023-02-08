@@ -203,7 +203,7 @@ function chart_OTA_Projected_Revenue(chart_OTA_Projected_Revenue_Values){
 
     //console.log("chart VALUES:"+chart_OTA_Projected_Revenue_Values);
 
-    var xValues = ["2021", "2022", "2023", "2024"];
+    var xValues = ["2022", "2023", "2024", "2025"];
     var yValues = chart_OTA_Projected_Revenue_Values;
     var barColors = ["#0f488d", "#46b649","#0896c5","#1f2e3e"];
 
@@ -376,7 +376,7 @@ function chart_OTA_Projected_Revenue(chart_OTA_Projected_Revenue_Values){
 }
 function chart_Digital_Projected_Revenue(chart_Digital_Projected_Revenue_Values){
 
-    var xValues = ["2021", "2022", "2023", "2024"];
+    var xValues = ["2022", "2023", "2024", "2025"];
     var yValues = chart_Digital_Projected_Revenue_Values;
     var barColors = ["#0f488d", "#46b649","#0896c5","#1f2e3e"];
 
@@ -438,7 +438,7 @@ function chart_Digital_COMPANY_Projected_Revenue(){
     let mixedChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ["2021", "2022", "2023", "2024"],
+            labels: ["2022", "2023", "2024", "2025"],
             datasets: [{
                 label: 'Your Digital Revenue',
                 data: chart_Digital_Projected_Revenue_Values,
