@@ -1,15 +1,15 @@
-totalOTARevenue2021 =0;         // Total OTA Revenue 2021
+totalOTARevenue2021 =0; totalOTARevenue2021TV =0;         // Total OTA Revenue 2021
 totalDigitalRevenue2021 =0;     // Total Digital Revenue 2021
 
-pdag2022BroadCast = 22.0;       // Projected Digital Advertising Growth 2022 for Broadcast
-pdag2023BroadCast = 12.90;      // Projected Digital Advertising Growth 2023 for Broadcast
-pdag2024BroadCast = 8.40;       // Projected Digital Advertising Growth 2024 for Broadcast
+pdag2022BroadCast = 17.5;       // Projected Digital Advertising Growth 2022 for Broadcast
+pdag2023BroadCast = 11.8;      // Projected Digital Advertising Growth 2023 for Broadcast
+pdag2024BroadCast = 11.7;       // Projected Digital Advertising Growth 2024 for Broadcast
 
-pOTAAdRG2022 = 11.40;           // Projected OTA Ad Revenue Growth 2022
-pOTAAdRG2023 = -5.00;           // Projected OTA Ad Revenue Growth 2023
-pOTAAdRG2024 = -1.00;           // Projected OTA Ad Revenue Growth 2024
+pOTAAdRG2022 = -5.9;   pOTAAdRG2022TV  = -14.8;           // Projected OTA Ad Revenue Growth 2022
+pOTAAdRG2023 = 0.50;   pOTAAdRG2023TV  = 23;           // Projected OTA Ad Revenue Growth 2023
+pOTAAdRG2024 = -0.3;   pOTAAdRG2024TV  = -17.6;           // Projected OTA Ad Revenue Growth 2024
 
-let OTA_2021      =0;   let OTA_2022      =0;   let OTA_2023      =0;   let OTA_2024      =0;
+let OTA_2021      =0;   let OTA_2022      =0;   let OTA_2023      =0;   let OTA_2024      =0;  let OTA_2021TV      =0;   let OTA_2022TV      =0;   let OTA_2023TV      =0;   let OTA_2024TV      =0;
 
 let Digital_2021      =0;   let Digital_2022      =0;   let Digital_2023      =0;   let Digital_2024      =0;
 
@@ -23,6 +23,16 @@ let Large_2024    =0;     let Mid_2024      =0;     let Small_2024    =0;
 
 
 function Projected_OTA_Revenue( previousYearRevenue, percentageChange ){
+
+    //console.log("Previous Year Revenue :" + previousYearRevenue);
+
+    result = 0;
+    percentageChange = percentageChange/100;
+    result = previousYearRevenue * (1+percentageChange);
+
+    return result;
+}
+function Projected_OTA_RevenueTV( previousYearRevenue, percentageChange ){
 
     //console.log("Previous Year Revenue :" + previousYearRevenue);
 
@@ -187,7 +197,7 @@ function formatCurrency(input, blur) {
 
 }
 
-let chart_OTA_Projected_Revenue_Values = [0,0,0,0];
+let chart_OTA_Projected_Revenue_Values = [0,0,0,0];     let chart_OTA_Projected_Revenue_ValuesTV = [0,0,0,0];
 let chart_Digital_Projected_Revenue_Values = [0,0,0,0];
 
 let Digital_COMPANY_Projected_Revenue_LARGE = [];
@@ -208,6 +218,182 @@ function chart_OTA_Projected_Revenue(chart_OTA_Projected_Revenue_Values){
     var barColors = ["#0f488d", "#46b649","#0896c5","#1f2e3e"];
 
     new Chart("chart_OTA_Projected_Revenue", {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                label: "OTA Revenue",
+                backgroundColor: barColors,
+                type: "bar",
+                borderColor: "#8e5ea2",
+                data: yValues,
+            }]
+        },
+        options: {
+            interactivityEnabled: false,
+            hover: {mode: null},
+            events: ["mouseout", "click", "touchstart", "touchmove", "touchend"],
+            interaction: {
+                mode: 'nearest'
+            },
+
+            animation: false,
+            legend: {display: false}
+            /*
+            title: {
+                display: true,
+                text: "OTA Ad Revenue Chart"
+            }
+            */
+            ,hover: {
+                animationDuration: 0, // duration of animations when hovering an item
+            },
+            responsiveAnimationDuration: 0
+            , scales: {
+                beginAtZero: true,
+                yAxes: [{
+                    beginAtZero: true,
+                    ticks: {
+                        suggestedMin: 1000,
+                        callback: function (value, index, values) {
+                            var resInM = (value < 1000000) ? value / 1000 + 'K' : value / 1000000 + 'M';
+                            return '$' + resInM;
+                        }
+                    },
+                }]
+            }
+        }
+    });
+
+    /*
+    new Chart("chart_OTA_Projected_Revenue", {
+        type: 'bar',
+        data: {
+            labels: ["2021", "2022", "2023", "2024"],
+            datasets: [
+                {
+                    label: "OTA Revenue",
+                    backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9"],
+                    type: "bar",
+                    borderColor: "#8e5ea2",
+                    data: chart_OTA_Projected_Revenue_Values,
+                    //data: [OTA_2021,OTA_2022,OTA_2023,OTA_2024],
+                    fill: false
+                }
+
+            ]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'OTA Revenue Projection Chart From 2021'
+            },
+            legend: { display: false }
+            ,scales: {
+                yAxes: [{
+                    ticks: {
+                        //suggestedMin: 10000
+                        callback: function (value, index, values) {
+
+                            var resInM = (value < 1000000) ? value / 1000 + 'K' : value / 1000000 + 'M';
+                            return '$' + resInM;
+                        }
+                    },
+                    gridLines: {
+
+                        lineWidth: 0.5,//0 will hide horizontal line
+                        zeroLineWidth: 1
+                    }
+                }]
+                ,xAxes: [{
+                    ticks: {
+                        fontSize: 14
+                    },
+                    barPercentage: 0.4,
+                    gridLines: {
+
+                        lineWidth: 0,
+                        zeroLineWidth: 1
+                    }
+                }]
+            }
+            ,responsive: true,
+            tooltips: {
+                enabled: true,
+                mode: 'index',
+                intersect: false,
+                backgroundColor: '#F0F0F0',
+
+                itemSort: function (a, b) {
+                    return 0 - 1
+                },
+
+                // String - Tooltip title font weight style
+                tooltipTitleFontStyle: "bold",
+
+                // String - Tooltip title font colour
+                titleFontColor: "#5D6067",
+                titleFontSize: 13,
+                bodyFontSize: 14,
+                bodySpacing: 6,
+                callbacks: {
+                    label: function (tooltipItems, data) {
+
+                        var multistringText = [];
+                        var str = Math.round(tooltipItems.value);
+
+                        multistringText.push("  " + str + "%");
+                        return multistringText;
+                    },
+                    labelColor: function (tooltipItems, chart) {
+
+                        if (tooltipItems.datasetIndex === 0)//blue bar
+                            return {
+
+                                backgroundColor: 'rgb(19, 90, 156, 1)'
+                            };
+                        else if (tooltipItems.datasetIndex === 1)//green
+                            return {
+
+                                backgroundColor: 'rgb(73, 180, 76, 1)'
+                            };
+                        else if (tooltipItems.datasetIndex === 2)//lite blue
+                            return {
+
+                                backgroundColor: 'rgb(10, 173, 238, 1)'
+                            };
+                        else if (tooltipItems.datasetIndex === 3)//orange
+                            return {
+
+                                backgroundColor: 'rgb(244, 157, 52, 1)'
+                            };
+
+                    },
+                    labelTextColor: function (tooltipItems, chart) {
+
+                        return "#5D6067";
+                    }
+
+                }
+            }
+
+        }
+    });
+    */
+
+
+
+}
+
+function chart_OTA_Projected_RevenueTV(chart_OTA_Projected_Revenue_ValuesTV){
+
+    //console.log("chart VALUES:"+chart_OTA_Projected_Revenue_Values);
+
+    var xValues = ["2022", "2023", "2024", "2025"];
+    var yValues = chart_OTA_Projected_Revenue_ValuesTV;
+    var barColors = ["#0f488d", "#46b649","#0896c5","#1f2e3e"];
+
+    new Chart("chart_OTA_Projected_RevenueTV", {
         type: "bar",
         data: {
             labels: xValues,
@@ -705,12 +891,12 @@ function chart_COMPANY(){
 }
 
 /* OTA Revenue start  */
-let OTA2022revenue    =0;       let OTA2023revenue      =0;     let OTA2024revenue    =0;
+let OTA2022revenue    =0;       let OTA2023revenue      =0;     let OTA2024revenue    =0;   let OTA2022revenueTV    =0;       let OTA2023revenueTV      =0;     let OTA2024revenueTV    =0;
 /* OTA Revenue end  */
 
 $(document).ready(function () {
 
-chart_OTA_Projected_Revenue();
+chart_OTA_Projected_Revenue();  chart_OTA_Projected_RevenueTV();
 chart_Digital_Projected_Revenue();
 
     /* ---------------------------------------------------------------- */
@@ -1065,6 +1251,81 @@ chart_Digital_COMPANY_Projected_Revenue();
 
         }
     });
+    /////////////////////////////////////////////////////////////////////
+    $("#totalOTARevenue2021TV").on({
+        focus: function(){
+
+            //console.log("On Focus");
+
+            var str = $(this).val();
+            var regex = /[$,\s]/g;
+            var stripped = str.replace(regex, '');
+            //console.log("stripped value on focus :" +stripped);
+
+            if(stripped == 0){
+                $(this).val('');
+                $(this).text('');
+            }
+
+        },
+
+        keyup: function () {
+
+            let dollarUS = Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: "USD",
+            });
+
+            var str = $(this).val();
+            var regex = /[$,\s]/g;
+            var stripped = str.replace(regex, '');
+            OTA_2021TV=stripped;
+            //console.log("stripped value on key up :" +stripped);
+
+            let otaRevenue2022TV = Projected_OTA_RevenueTV(stripped,pOTAAdRG2022TV);
+            OTA_2022TV = otaRevenue2022TV.toFixed(2);
+            $('#OTA2022revenueTV').val(otaRevenue2022TV.toFixed(2));
+            $('#OTA2022revenueTV').text(dollarUS.format(OTA_2022TV));
+
+            let otaRevenue2023TV = Projected_OTA_RevenueTV(otaRevenue2022TV,pOTAAdRG2023TV);
+            OTA_2023TV = otaRevenue2023TV.toFixed(2);
+            $('#OTA2023revenueTV').val(otaRevenue2023TV.toFixed(2));
+            $('#OTA2023revenueTV').text(dollarUS.format(OTA_2023TV));
+
+            let otaRevenue2024TV = Projected_OTA_RevenueTV(otaRevenue2023TV,pOTAAdRG2024TV);
+            OTA_2024TV = otaRevenue2024TV.toFixed(2);
+            $('#OTA2024revenueTV').val(otaRevenue2024TV.toFixed(2));
+            $('#OTA2024revenueTV').text(dollarUS.format(OTA_2024TV));
+
+
+            //console.log("CHART DATA FOR OTA Revenue :"+OTA_2021+"-"+OTA_2022+"-"+OTA_2023+"-"+OTA_2024);
+            //console.log(OTA_2021);
+
+            chart_OTA_Projected_Revenue_ValuesTV = [OTA_2021TV,OTA_2022TV,OTA_2023TV,OTA_2024TV];
+            chart_OTA_Projected_RevenueTV(chart_OTA_Projected_Revenue_ValuesTV);
+
+
+        },
+        blur: function () {
+
+            var str = $(this).val();
+            var regex = /[$,\s]/g;
+            var stripped = str.replace(regex, '');
+            // Format the price above to USD, INR, EUR using their locales.
+            let dollarUS = Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: "USD",
+            });
+            $(this).val(dollarUS.format(stripped));
+            //$(this).text(dollarUS.format(stripped));
+            //console.log("Dollars: " + dollarUS.format(stripped));
+
+            chart_OTA_Projected_Revenue(chart_OTA_Projected_Revenue_Values);
+
+        }
+    });
+
+
     $("#totalDigitalRevenue2021").on({
         focus: function(){
 
