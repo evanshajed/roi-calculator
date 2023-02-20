@@ -99,23 +99,40 @@ function ValueIn3DigitComma(strVal) {
 function savePDF(){
 
     var node = document.getElementById('zone');
-    //domtoimage.toPng(node)
+
+
+    let doc = new jsPDF({
+        orientation: 'p',
+        unit: 'mm',
+        format: 'a4',
+        pagesplit: true
+    });
+
     domtoimage.toJpeg(node)
         .then(function (dataUrl) {
             var img = new Image();
             img.src = dataUrl;
                                     //document.body.appendChild(img);
-            let doc = new jsPDF({
-                orientation: 'p',
-                unit: 'mm',
-                format: 'a4',
-            });
+
             doc.addImage(img,'JPEG', 10, 0, 185, 298);
-            doc.save("Marketron_ROI_Calculation.pdf");
+
+
+            var node2 = document.getElementById('zone2');
+            domtoimage.toJpeg(node2).then(function (dataUrl2) {
+                var img2 = new Image();
+                img2.src = dataUrl2;
+
+                doc.addPage();
+                doc.addImage(img2,'JPEG', 10, 0, 185, 120);
+                doc.save("Marketron_ROI_Calculation.pdf");
+
+            });
+
         })
         .catch(function (error) {
             console.error('oops, something went wrong!', error);
         });
+
 
 }
 
